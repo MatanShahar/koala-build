@@ -56,4 +56,8 @@ typings/
 
 # dotenv environment variables file
 .env
+.wsname
+
+# Build artifacts directory
+build/obj/
 

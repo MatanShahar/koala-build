@@ -1,0 +1,25 @@
+{
+  "name": "koala-build",
+  "version": "0.0.1-beta1",
+  "description": "A smart configuration manager to manage all your build parameters in one place",
+  "main": "lib/index.js",
+  "repository": "https://github.com/KoalityGroup/koala-build",
+  "author": "Koality Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/glob": "^5.0.33",
+    "@types/lodash": "^4.14.80",
+    "@types/node": "^8.0.47",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.3",
+    "gulp-util": "^3.0.8",
+    "run-sequence": "^2.2.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "lodash": "^4.17.4"
+  }
+}
