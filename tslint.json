@@ -1,0 +1,27 @@
+{
+    "defaultSeverity": "warn",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-trailing-whitespace": false,
+        "no-empty": false,
+        "eofline": true,
+        "no-empty-interface": true,
+        "member-ordering": false,
+        "curly": false,
+        "quotemark": {
+            "options": "single",
+            "severity": "default"
+        },
+        "prefer-const": true,
+        "no-var-keyword": false,
+        "trailing-comma": false,
+        "variable-name": {
+            "options": "allow-leading-underscore",
+            "severity": "default"
+        }
+    },
+    "rulesDirectory": []
+}
