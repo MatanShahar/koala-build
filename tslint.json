@@ -15,7 +15,7 @@
             "options": "single",
             "severity": "default"
         },
-        "prefer-const": true,
+        "prefer-const": false,
         "no-var-keyword": false,
         "trailing-comma": false,
         "variable-name": {
