@@ -40,7 +40,7 @@ function parseLayers(fragment: string) {
 export default class LayeredJsonConfigProvider implements IConfigProvider {
     private readonly _baseDirectory: string;
 
-    private constructor(baseDirectory: string) {
+    constructor(baseDirectory: string) {
         this._baseDirectory = baseDirectory;
     }
 
