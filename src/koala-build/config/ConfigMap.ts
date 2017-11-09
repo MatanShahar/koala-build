@@ -1,7 +1,10 @@
+import KoalaError from '../KoalaError';
 import IConfigResult from './ConfigResult';
+
+import { IConfigQuery } from './query';
 import Options, { IQueryOptions } from './QueryOptions';
 
-type options_t = IQueryOptions | any | undefined | null;
+export type options_t = IQueryOptions | any | undefined | null;
 
 /**
  * Core interface for config values retrival.
@@ -12,29 +15,27 @@ export interface IConfigMap {
      * @param query The query string.
      * @return The config value matching the query.
      */
-    getValue(query: string, options?: options_t): any;
+    getValue(query: IConfigQuery, options?: options_t): any;
 
     /**
      * Gets a config value matching the given query as a config result.
      * @param query The query string.
      * @return A config result with the value matching the query.
      */
-    get(query: string, options?: options_t): IConfigResult;
+    get(query: IConfigQuery, options?: options_t): IConfigResult;
 }
 
 export default abstract class ConfigMap implements IConfigMap {
-    public getValue(query: string, options?: options_t) {
+    public getValue(query: IConfigQuery, options?: options_t) {
         return this.get(query, options);
     }
 
-    public get(query: string, options?: options_t): IConfigResult {
+    public get(query: IConfigQuery, options?: options_t): IConfigResult {
         const queryOptions = resolveQueryOptions(options);
-
-        // TODO: this should pass a Query object, not a string.
         return this.getCore(query, queryOptions);
     }
 
-    protected abstract getCore(query: string, options: IQueryOptions): IConfigResult;
+    protected abstract getCore(query: IConfigQuery, options: IQueryOptions): IConfigResult;
 }
 
 export function resolveQueryOptions(options: options_t): IQueryOptions {
