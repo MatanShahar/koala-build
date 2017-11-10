@@ -31,12 +31,12 @@ export default class FsConfigLocator implements IConfigLocator {
     public locate(lookup: IConfigLookup): IConfigProvider {
         const lookupPath = this.resolveLookupPath(lookup);
 
-        var dirPath = path.join(this._baseDir, lookupPath.dir, lookupPath.name);
+        let dirPath = path.join(this._baseDir, lookupPath.dir, lookupPath.name);
         if (fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory())
             return new LayeredJsonConfigProvider(dirPath);
 
-        var jsonName = lookupPath.name + '.json';
-        var jsonPath = path.join(this._baseDir, lookupPath.dir, jsonName);
+        let jsonName = `${lookupPath.name}.json`;
+        let jsonPath = path.join(this._baseDir, lookupPath.dir, jsonName);
         if (fs.existsSync(dirPath) && fs.lstatSync(dirPath).isFile())
             return JsonConfigProvider.fromFile(jsonPath);
 
@@ -45,7 +45,7 @@ export default class FsConfigLocator implements IConfigLocator {
     }
 
     private resolveLookupPath(lookup: IConfigLookup) {
-        var objectPath = this.resolveLookupObjectPath(lookup.object);
+        let objectPath = this.resolveLookupObjectPath(lookup.object);
         return { dir: objectPath, name: lookup.objectName };
     }
 

@@ -1,15 +1,15 @@
 import KoalaError from '../../KoalaError';
 import IConfigResult from '../ConfigResult';
-import fluentBuilder from './fluentBuilder';
 
 import { IConfigQuery } from '.';
 import { IConfigMap, options_t } from '../ConfigMap';
-import { IFluentBuilder } from './fluentBuilder';
 import { IQueryBuilder } from './queryBuilder';
 import { IQueryParser } from './QueryParser';
 
-type BuilderFactory = () => IQueryBuilder;
-type query_t = IConfigQuery | ((builder: IFluentBuilder) => IFluentBuilder) | string;
+import fluentBuilder, { IFluentBuilder } from './fluentBuilder';
+
+export type BuilderFactory = () => IQueryBuilder;
+export type query_t = IConfigQuery | ((builder: IFluentBuilder) => IFluentBuilder) | string;
 
 export interface IConfigMapProxy {
     getValue(query: query_t, options?: options_t): any;
@@ -82,9 +82,8 @@ class ConfigMapProxy implements IConfigMapProxy {
 
 function createMapWrapper(builderFactory: BuilderFactory = null, queryParser: IQueryParser = null) {
     return function wrapMap(configMap: IConfigMap) {
-        return new ConfigMapProxy(configMap, builderFactory, queryParser);
+        return new ConfigMapProxy(configMap, builderFactory, queryParser) as IConfigMapProxy;
     };
 }
 
-const mapWrapper = createMapWrapper;
-export default mapWrapper;
+export default createMapWrapper;

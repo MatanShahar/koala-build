@@ -3,13 +3,14 @@ export interface IQueryOptions {
     isOptional?: boolean;
     defaultValue?: any;
 
-    queryBase?: string;
+    queryBase?: string[];
 }
 
+// tslint:disable-next-line:variable-name
 const Options = {
-    default: (defaultValue): IQueryOptions => ({ defaultValue }),
+    default: (defaultValue: any): IQueryOptions => ({ defaultValue }),
     optional: (): IQueryOptions => ({ isOptional: true }),
-    rebase: (queryBase): IQueryOptions => ({ queryBase }),
+    rebase: (queryBase: string[]): IQueryOptions => ({ queryBase }),
     empty: (): IQueryOptions => ({ isOptional: false, defaultValue: undefined })
 };
 

@@ -1,4 +1,3 @@
-import KoalaError from '../KoalaError';
 import IConfigResult from './ConfigResult';
 
 import { IConfigQuery } from './query';

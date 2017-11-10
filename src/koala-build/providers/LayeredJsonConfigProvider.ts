@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 
 import * as glob from 'glob';
@@ -9,14 +8,14 @@ import JsonConfigProvider from './JsonConfigProvider';
 
 function importLayeredJson(fileNameFragment: string, baseDir: string, pf: (path: string) => IConfigProvider) {
     const layers = parseLayers(fileNameFragment);
-    var actuallFileName = path.resolve(baseDir, fileNameFragment);
+    let actuallFileName = path.resolve(baseDir, fileNameFragment);
 
-    var provider = pf(actuallFileName);
-    var tailObject = provider.getConfig();
+    let provider = pf(actuallFileName);
+    let tailObject = provider.getConfig();
 
-    var currentObject = tailObject;
-    for (var layer of layers.reverse()) {
-        var newObject: any = { };
+    let currentObject = tailObject;
+    for (let layer of layers.reverse()) {
+        let newObject: any = { };
         newObject[layer] = currentObject;
 
         currentObject = newObject;
@@ -45,11 +44,11 @@ export default class LayeredJsonConfigProvider implements IConfigProvider {
     }
 
     public getConfig(): any {
-        const pf = (jpath) => JsonConfigProvider.fromFile(jpath);
-        var subfiles = glob.sync('**/*.json');
+        const pf = (jpath: string) => JsonConfigProvider.fromFile(jpath);
+        let subfiles = glob.sync('**/*.json');
 
-        var mergeTarget = { };
-        for (var subfile of subfiles) {
+        let mergeTarget = { };
+        for (let subfile of subfiles) {
             _.merge(mergeTarget, importLayeredJson(subfile, this._baseDirectory, pf));
         }
 

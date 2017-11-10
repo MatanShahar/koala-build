@@ -13,7 +13,7 @@ export interface IFluentBuilder {
 type BuilderFactory = () => IQueryBuilder;
 export default function fluentBuilder(builderFactory: BuilderFactory): IFluentBuilder {
     const proxyHandler = {
-        get: (target, name) => {
+        get: (target: any, name: string) => {
             if (name in target) {
                 let member = target[name];
                 if (typeof member === 'function')
@@ -28,7 +28,7 @@ export default function fluentBuilder(builderFactory: BuilderFactory): IFluentBu
 
             return target;
         },
-        apply: (target, thisArg, argsList) => {
+        apply: (target: any, thisArg: any, argsList: any[]) => {
             return (target.__builder$__ as IQueryBuilder).build();
         }
     };

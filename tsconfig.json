@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "checkJs": false,
+        "allowUnreachableCode": true,
+        "declaration": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es2015"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "target": "es5"
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
