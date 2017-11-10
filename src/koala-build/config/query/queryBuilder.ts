@@ -108,7 +108,7 @@ export class DefaultQueryBuilder implements IQueryBuilder {
         };
     }
 
-    private static nornalizeDirectives(directives): string[] {
+    private static nornalizeDirectives(directives: string | string[]): string[] {
         let newDirectives: string[] = null;
         
         if (!directives)

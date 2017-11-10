@@ -2,7 +2,7 @@
 /**
  * An interface representing the result of a query.
  */
-export default interface IConfigResult {
+interface IConfigResult {
     /** The query result value. */
     value: any;
 
@@ -13,3 +13,5 @@ export default interface IConfigResult {
 
     isAlias: boolean;
 }
+
+export default IConfigResult;
